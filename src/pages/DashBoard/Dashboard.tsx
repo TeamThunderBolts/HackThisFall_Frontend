@@ -12,14 +12,17 @@ import {
     Button,
 } from '@mantine/core';
 import { BigHead } from '@bigheads/core'
-import { userContext } from '../../App';
+import UserContext from '../../context/UserContext';
 import "./Dashboard.scss";
 import CreateTarget from '../../components/CreateTarget/CreateTarget';
+import CreateTemplate from '../../components/CreateTemplate/CreateTemplate';
+import CreateCampaign from '../../components/CreateCampaign/CreateCampaign';
+import ListTargets from '../../components/ListTargets/ListTargets';
 
 const Dashboard = () => {
     const theme = useMantineTheme();
     const [opened, setOpened] = useState(false);
-    const user = useContext(userContext);
+    const user = useContext(UserContext);
     const [select, setSelect] = useState(0);
 
     return (
@@ -38,10 +41,13 @@ const Dashboard = () => {
                             Add Targets
                         </Button>
                         <Button onClick={() => setSelect(1)} variant="outline" style={{width: '100%', margin: '5px 0'}}>
-                            Show Targets
+                            Create Template
                         </Button>
                         <Button onClick={() => setSelect(2)} variant="outline" style={{width: '100%', margin: '5px 0'}}>
                             Create Campaign
+                        </Button>
+                        <Button onClick={() => setSelect(3)} variant="outline" style={{width: '100%', margin: '5px 0'}}>
+                            List Targets
                         </Button>
                     </Navbar.Section>
                     <Navbar.Section>
@@ -84,6 +90,12 @@ const Dashboard = () => {
             {
                 select === 0 ?
                 <CreateTarget /> :
+                select === 1 ?
+                <CreateTemplate /> :
+                select === 2 ?
+                <CreateCampaign /> :
+                select === 3 ?
+                <ListTargets /> :
                 null
             }
         </AppShell>

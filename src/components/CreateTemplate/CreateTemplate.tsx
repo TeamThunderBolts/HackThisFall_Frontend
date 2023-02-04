@@ -1,10 +1,9 @@
-import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import UserContext from "../../context/UserContext";
+import { useState, useContext } from 'react';
+import UserContext from '../../context/UserContext';
 import axios from 'axios';
-import "./CreateTarget.scss";
+import "./CreateTemplate.scss";
 
-const CreateTarget = () => {
+const CreateTemplate = () => {
     const [target_name, setTargetName] = useState("");
     const [target_phone, setTargetPhone] = useState("");
     // const navigate = useNavigate();
@@ -17,7 +16,7 @@ const CreateTarget = () => {
             company_username: user.company_name
         }
         console.log(data);
-        axios.post('https://callbot-fxb6.onrender.com/add_target/', data)
+        axios.post('https://callbot-fxb6.onrender.com/create_template/', data)
         .then(function (response) {
 
             console.log(response.data);
@@ -28,8 +27,8 @@ const CreateTarget = () => {
     }
 
     return (
-        <div className="Target">
-            <div className="Target__card">
+        <div className="Template">
+            <div className="Template__card">
                 <div>
                     <label htmlFor="uname">Target Name</label>
                     <input type="text" name="uname" id="uname" onChange={e => setTargetName(e.target.value)}/>
@@ -46,4 +45,4 @@ const CreateTarget = () => {
     );
 };
 
-export default CreateTarget;
+export default CreateTemplate;
