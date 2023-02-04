@@ -1,17 +1,19 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import "./Login.scss";
 
 const Login = () => {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
     
     const signUpHandler = () => {
         const data = {
             username: username,
             password: password,
         }
-        axios.post('https://17d4d51fbb0acc.lhr.life/login/', data)
+        axios.post('https://callbot-fxb6.onrender.com/login/', data)
         .then(function (response) {
             console.log(response.data);
         })
@@ -33,6 +35,9 @@ const Login = () => {
                 </div>
                 <div>
                     <button onClick={signUpHandler}>Login</button>
+                </div>
+                <div>
+                    <button onClick={() => navigate("/")}>Back to Home</button>
                 </div>
             </div>
         </div>

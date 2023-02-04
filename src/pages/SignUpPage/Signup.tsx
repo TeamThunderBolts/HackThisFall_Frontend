@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./Signup.scss";
 
@@ -6,6 +7,7 @@ const Signup = () => {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [company, setCompany] = useState("");
+    const navigate = useNavigate();
     
     const signUpHandler = () => {
         const data = {
@@ -14,7 +16,7 @@ const Signup = () => {
             company_name: company
         }
         console.log(data);
-        axios.post('https://0a6608d3452cdd.lhr.life/signup/', data)
+        axios.post('https://callbot-fxb6.onrender.com/signup/', data)
           .then(function (response) {
             console.log(response);
           })
@@ -40,6 +42,9 @@ const Signup = () => {
                 </div>
                 <div>
                     <button onClick={signUpHandler}>Sign Up</button>
+                </div>
+                <div>
+                    <button onClick={() => navigate("/")}>Back to Home</button>
                 </div>
             </div>
         </div>
