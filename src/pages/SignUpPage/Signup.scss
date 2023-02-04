@@ -1,0 +1,64 @@
+.Signup {
+    width: 100vw;
+    height: 100vh;
+    background: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__card {
+        width: 30%;
+        height: 40%;
+        border-radius: 30px;
+        background: #e0e0e0;
+        box-shadow: 20px 20px 60px #bebebe,
+                    -20px -20px 60px #ffffff;
+        padding: 5%;
+
+        & div {
+            display: flex;
+            flex-direction: column;
+            & label {
+                font-size: 1.5rem;
+            }
+            & input {
+                border: none;
+                border-radius: 15px;
+                padding: 15px;
+                margin: 1.5rem 0;
+                background-color: #e8e8e8;
+                box-shadow: 6px 6px 12px #ffffff,
+                            -6px -6px 12px #c5c5c5;
+                font-size: medium;
+                font-weight: bold;
+            }
+               
+            & input:focus {
+                outline-color: white;
+                place-content: "Enter your message!";
+            }
+
+            & button {
+                background: #e8e8e8;
+                font-family: inherit;
+                padding: 0.8em;
+                font-weight: 900;
+                font-size: 18px;
+                border: 3px solid black;
+                border-radius: 0.4em;
+                box-shadow: 6px 6px 12px #ffffff,
+                            -6px -6px 12px #c5c5c5;
+            }
+               
+            & button:hover {
+                transform: translate(-0.05em, -0.05em);
+                box-shadow: 0.15em 0.15em;
+                cursor: pointer;
+            }
+               
+            & button:active {
+                transform: translate(0.05em, 0.05em);
+                box-shadow: 0.05em 0.05em;
+            }
+        }
+    }
+}
