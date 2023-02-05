@@ -1,9 +1,9 @@
-import { useState, useContext, useEffect } from "react";
-import UserContext from "../../context/UserContext";
+import { useState, useEffect, useContext } from 'react';
+import UserContext from '../../context/UserContext';
 import axios from 'axios';
-import "./ListTargets.scss";
+import "./TemplateList.scss";
 
-const ListTargets = () => {
+const TemplateList = () => {
     const [list, setList] = useState([]);
     const user = useContext(UserContext);
 
@@ -12,7 +12,7 @@ const ListTargets = () => {
     };
     useEffect(() => {
         console.log("Sending POST");
-        axios.post('https://callbot-fxb6.onrender.com/target_list/', data)
+        axios.post('https://callbot-fxb6.onrender.com/template_list/', data)
             .then(function (response) {
                 setList(response.data);
                 console.log(response.data);
@@ -30,9 +30,9 @@ const ListTargets = () => {
                     list.map((data: any) => {
                         return (
                             <div>
-                                Target Name: {data.tagret_name}
+                                Template Name: {data.template_name}
                                 <br />
-                                Target Phone: {data.target_phone}
+                                UseCases: {data.usecases}
                                 <br />
                             </div>
                         );
@@ -41,6 +41,7 @@ const ListTargets = () => {
             </div>
         </div>
     );
-};
 
-export default ListTargets;
+}
+
+export default TemplateList;

@@ -18,6 +18,7 @@ import CreateTarget from '../../components/CreateTarget/CreateTarget';
 import CreateTemplate from '../../components/CreateTemplate/CreateTemplate';
 import CreateCampaign from '../../components/CreateCampaign/CreateCampaign';
 import ListTargets from '../../components/ListTargets/ListTargets';
+import TemplateList from '../../components/TemplateList/TemplateList';
 
 const Dashboard = () => {
     const theme = useMantineTheme();
@@ -48,6 +49,9 @@ const Dashboard = () => {
                         </Button>
                         <Button onClick={() => setSelect(3)} variant="outline" style={{width: '100%', margin: '5px 0'}}>
                             List Targets
+                        </Button>
+                        <Button onClick={() => setSelect(4)} variant="outline" style={{width: '100%', margin: '5px 0'}}> 
+                            List Templates
                         </Button>
                     </Navbar.Section>
                     <Navbar.Section>
@@ -96,6 +100,8 @@ const Dashboard = () => {
                 <CreateCampaign /> :
                 select === 3 ?
                 <ListTargets /> :
+                select === 4 ?
+                <TemplateList /> :
                 null
             }
         </AppShell>

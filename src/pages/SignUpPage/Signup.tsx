@@ -4,20 +4,9 @@ import axios from 'axios';
 import "./Signup.scss";
 import UserContext from '../../context/UserContext';
 
-const Signup = () => {
-    // const [username, setUserName] = useState("");
-    // const [password, setPassword] = useState("");
-    // const [company, setCompany] = useState("");
+const Signup = (props: any) => {
+    const {setUsername, setPassword, setCompany, username, password, company_name} = props;
     const navigate = useNavigate();
-
-    const {
-        username, 
-        // setUsername, 
-        password, 
-        // setPassword, 
-        company_name, 
-        // setCompanyName
-    } = useContext(UserContext);
     
     const signUpHandler = () => {
         const data = {
@@ -28,7 +17,11 @@ const Signup = () => {
         console.log(data);
         axios.post('https://callbot-fxb6.onrender.com/signup/', data)
           .then(function (response) {
-            console.log(response);
+            console.log("posted");
+            setUsername(username);
+            setPassword(password);
+            setCompany(company_name);
+            navigate("/dash");
           })
           .catch(function (error) {
             console.log(error);
@@ -44,7 +37,7 @@ const Signup = () => {
                     type="text" 
                     name="uname" 
                     id="uname" 
-                    // onChange={e => setUsername(e.target.value)} 
+                    onChange={e => setUsername(e.target.value)} 
                     />
                 </div>
                 <div>
@@ -53,7 +46,7 @@ const Signup = () => {
                     type="password" 
                     name="password" 
                     id="password" 
-                    // onChange={e => setPassword(e.target.value)}
+                    onChange={e => setPassword(e.target.value)}
                     />
                 </div>
                 <div>
@@ -62,7 +55,7 @@ const Signup = () => {
                     type="text" 
                     name="cname" 
                     id="cname" 
-                    // onChange={e => setCompanyName(e.target.value)}
+                    onChange={e => setCompany(e.target.value)}
                     />
                 </div>
                 <div>

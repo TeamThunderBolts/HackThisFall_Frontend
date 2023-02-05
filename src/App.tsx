@@ -12,9 +12,9 @@ import Dashboard from "./pages/DashBoard/Dashboard";
 import UserContext from "./context/UserContext";
 
 function App() {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [company_name, setCompanyName] = useState("");
+  const [username, setUsername] = useState("abhay");
+  const [password, setPassword] = useState("vijay");
+  const [company_name, setCompanyName] = useState("mlh");
   // const user = {
   //   username: username,
   //   setUsername: setUsername,
@@ -23,14 +23,15 @@ function App() {
   //   company_name: company_name,
   //   setCompanyName: setCompanyName,
   // };
-  const user = useContext(UserContext);
+  // const user = useContext(UserContext);
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={user.username === "" ? <HomePage /> : <Dashboard />} />
-          <Route path="/signup" element={<UserContext.Provider value={user}><Signup /></UserContext.Provider>} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/dash" element={<Dashboard />} />
+          <Route path="/signup" element={<Signup setUsername={setUsername} setPassword={setPassword} setCompany={setCompanyName} username={username} password={password} company_name={company_name} />} />
+          <Route path="/login" element={<Login setUsername={setUsername} setPassword={setPassword} setCompany={setCompanyName} username={username} password={password} company_name={company_name} />} />
         </Routes>
       </Router>
     </div>
